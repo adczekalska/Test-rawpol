@@ -22,7 +22,7 @@ def test_my_first_chrome_selenium_test():
     time.sleep(3)
 
     # Inicjalizacja Zaloguj/Zarejestruj się
-    search_login = driver.find_element_by_class_name('category-element__title')
+    search_login = driver.find_element_by_class_name('category-element__img')
     search_login.click()
     time.sleep(3)
 
