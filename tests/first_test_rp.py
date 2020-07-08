@@ -27,17 +27,17 @@ def test_my_first_chrome_selenium_test():
     time.sleep(3)
 
     # Inicjalizacja elementu z loginem i wpisanie loginu
-    #search_login_input = browser.find_element_by_id('login')
-    #search_login_input.send_keys('xcoding')
+    search_login_input = browser.find_element_by_id('login')
+    search_login_input.send_keys('xcoding')
 
     # Inicjalizacja elementu z hasłem i wpisanie hasła
-    #search_password_input = browser.find_element_by_id('password')
-    #search_password_input.send_keys('tester')
+    search_password_input = browser.find_element_by_id('password')
+    search_password_input.send_keys('tester')
 
     # Kliknięcie button Zaloguj
-    #search_button = browser.find_element_by_class_name('rw-form__button')
-    #search_button.click()
-    #time.sleep(5)
+    search_button = browser.find_element_by_class_name('rw-form__button')
+    search_button.click()
+    time.sleep(5)
 
     # Zamknięcie przeglądarki
     driver.quit()
