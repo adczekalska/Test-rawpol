@@ -18,7 +18,7 @@ def test_searching_in_rawpol():
     # Znalezienie paska wyszukiwania i szukanie
     search_bar = driver.find_element_by_id('main-searchbox')
     search_bar.send_keys('rękawiczki')
-    time.sleep(5)
+    time.sleep(3)
 
     # Znalezienie guzika wyszukiwania (lupki)
     search_button = driver.find_element_by_class_name('icon-rp.icon-rp-lupa_ffffff')
