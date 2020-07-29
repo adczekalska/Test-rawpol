@@ -2,6 +2,11 @@ from selenium import webdriver
 import time
 import pytest
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+
 @pytest.fixture()
 def browser():
     # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
@@ -23,26 +28,16 @@ def browser():
     # Zamknięcie przeglądarki
     browser.quit()
 
-def test_login(browser):
+def test_home_page_link_to_login(browser):
      # Inicjalizacja menu logowania
     search_menu = browser.find_element_by_class_name('dotted-menu')
     search_menu.click()
     time.sleep(3)
 
     # Inicjalizacja Zaloguj/Zarejestruj się
-    search_login = browser.find_element_by_class_name('category-element.no-children')
-    search_login.click()
-    time.sleep(3)
+    link_list = browser.find_elements_by_css_selector('.user-menu .category-element__title')
+    link_list[2].click()
 
-    # Inicjalizacja elementu z loginem i wpisanie loginu
-    search_login_input = browser.find_element_by_id('login')
-    search_login_input.send_keys('xcoding')
-
-    # Inicjalizacja elementu z hasłem i wpisanie hasła
-    search_password_input = browser.find_element_by_id('password')
-    search_password_input.send_keys('tester')
-
-    # Kliknięcie button Zaloguj
-    search_button = browser.find_element_by_class_name('rw-form__button')
-    search_button.click()
-    time.sleep(5)
+    wait = WebDriverWait(browser, 10)
+    login_screen = (By.CLASS_NAME, 'login')
+    wait.until(expected_conditions.visibility_of_element_located(login_screen))

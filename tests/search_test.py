@@ -41,13 +41,13 @@ def test_searching_in_rawpol(browser):
     search_button.click()
     time.sleep(5)
 
-    #wait = WebDriverWait(browser, 30)
-    #search_result = (By.CSS_SELECTOR, '.list-tile__title.nowrap')
-    #wait.until(expected_conditions.visibility_of_element_located(search_result))
+    wait = WebDriverWait(browser, 30)
+    search_result = (By.CSS_SELECTOR, '.list-tile__title.nowrap')
+    wait.until(expected_conditions.visibility_of_element_located(search_result))
 
     # Sprawdzenie że jeden z wyników ma tytuł 'RNIT-REVEX'
     list_of_title_elements = browser.find_elements_by_css_selector('.list-tile__title.nowrap')
     list_of_titles = []
     for element in list_of_title_elements:
-      list_of_titles.append(element.text)
+        list_of_titles.append(element.text)
     assert "RNIT-REVEX" in list_of_titles
