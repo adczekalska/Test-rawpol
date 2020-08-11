@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from pages import HomePage
+
 
 @pytest.fixture()
 def browser():
@@ -14,7 +16,8 @@ def browser():
     browser = webdriver.Chrome()
 
     # Otwarcie strony
-    browser.get('https://rp.x-coding.pl/pl/')
+    home_page = HomePage(browser)
+    home_page.load()
     browser.delete_cookie('uc_rodo_id')
     cookie = {'name': 'uc_rodo_id',
               'value': 'ex_kc2bm8fo_ffg7b6sa',

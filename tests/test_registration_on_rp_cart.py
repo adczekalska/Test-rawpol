@@ -1,6 +1,9 @@
 import pytest
 from selenium import webdriver
 import time
+import string
+import random
+
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -45,7 +48,7 @@ def test_should_open_registration(browser):
     id_input.send_keys('8822115443')
 
     login_input = browser.find_element_by_css_selector(("[aria-label='Login *']"))
-    login_input.send_keys('tester72')
+    login_input.send_keys(get_random_string(12))
 
     password_input = browser.find_element_by_css_selector("[aria-label='Hasło *']")
     password_input.send_keys('testowanie')
@@ -65,7 +68,12 @@ def test_should_open_registration(browser):
     telephone_input = browser.find_element_by_css_selector("[aria-label='Telefon kontaktowy *']")
     telephone_input.send_keys('535558353')
 
-    next_button = browser.find_element_by_class_name('v-btn__content')
+    next_button = browser.find_element_by_css_selector('.buttons-container .rp-btn.primary')
     next_button.click()
 
+    wait = WebDriverWait(browser, 5)
+    gus_dialog = (By.CLASS_NAME, '.gus_dialog')
+    wait.until(expected_conditions.invisibility_of_element(gus_dialog))
 
+def get_random_string(length):
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
