@@ -14,15 +14,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 @pytest.fixture()
 def browser():
     browser = webdriver.Chrome()
-    browser.get('https://rp-cart.x-coding.pl/pl/user')
+    browser.get('https://rp-prod.x-coding.pl/pl/user')
     browser.delete_cookie('uc_rodo_id')
     cookie = {'name': 'uc_rodo_id',
               'value': 'ex_kc2bm8fo_ffg7b6sa',
-              'domain': '.rp-cart.x-coding.pl'}
+              'domain': '.rp-prod.x-coding.pl'}
     browser.add_cookie(cookie)
     browser.refresh()
 
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser, 20)
     login_button = (By.CLASS_NAME, 'rw-form__button')
     wait.until(expected_conditions.element_to_be_clickable(login_button))
 
