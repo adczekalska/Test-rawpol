@@ -75,5 +75,28 @@ def test_should_open_registration(browser):
     gus_dialog = (By.CLASS_NAME, '.gus_dialog')
     wait.until(expected_conditions.invisibility_of_element(gus_dialog))
 
+    download_button = browser.find_element_by_class_name('.button .v-btn__content')
+    download_button.click()
+
+    use_data_button = browser.find_element_by_class_name('.button .v-btn__content')
+    use_data_button.click()
+
+    next_button = browser.find_element_by_css_selector('.buttons-container .rp-btn.primary')
+    next_button.click()
+
+    wait = WebDriverWait(browser, 5)
+    address = (By.CLASS_NAME, '.address-tile__content')
+    wait.until(expected_conditions.invisibility_of_element(address))
+
+    next_button = browser.find_element_by_css_selector('.buttons-container .rp-btn.primary')
+    next_button.click()
+
 def get_random_string(length):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
+
+
+
+
+
+
+
